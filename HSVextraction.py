@@ -6,4 +6,4 @@ def hsvExtraction(path):
     hue = hsvImg[:, :, 0].mean()
     saturation = hsvImg[:, :, 1].mean()
     value = hsvImg[:, :, 2].mean()
-    return [[hue, saturation, value]]
+    return [hue, saturation, value]
