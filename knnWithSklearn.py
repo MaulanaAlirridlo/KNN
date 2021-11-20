@@ -14,5 +14,5 @@ classifier.fit(x, y)
 
 path = './images/testing'
 for file in listdir(path) :
-    kelas = classifier.predict([hsvExtraction(path+"/"+file)])
-    print(kelas)
+    classified = classifier.predict([hsvExtraction(path+"/"+file)])
+    print(classified)

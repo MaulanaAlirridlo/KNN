@@ -19,5 +19,5 @@ def predict(k, attributes) :
 
 path = './images/testing'
 for file in listdir(path) :
-    kelas = predict(3, hsvExtraction(path+"/"+file))
-    print(kelas)
+    classified = predict(3, hsvExtraction(path+"/"+file))
+    print(classified)
