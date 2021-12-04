@@ -10,11 +10,11 @@ def glcm(img):
     glcm0 = np.zeros([256,256],dtype=np.uint8)
     glcm0.fill(0)
     totalPiksel0 = 0
-    glcm45 = glcm0
+    glcm45 = np.zeros([256,256],dtype=np.uint8)
     totalPiksel45 = 0
-    glcm90 = glcm0
+    glcm90 = np.zeros([256,256],dtype=np.uint8)
     totalPiksel90 = 0
-    glcm135 = glcm0
+    glcm135 = np.zeros([256,256],dtype=np.uint8)
     totalPiksel135 = 0
 
     for y in range(2, height-1):
@@ -187,3 +187,5 @@ def glcm(img):
     g135 = {'asm': asm135, 'kontras': kontras135, 'idm': idm135, 'entropi': entropi135, 'korelasi': kontras135}
 
     return [g0, g45, g90, g135]
+
+print(glcm(cv2.imread('./images/testing/index.jpg')))
