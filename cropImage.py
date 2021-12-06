@@ -1,7 +1,6 @@
 import numpy as np
 import cv2
 from os import listdir, walk
-from os.path import isdir, isfile, splitext
 
 
 def croppingImage(path):
