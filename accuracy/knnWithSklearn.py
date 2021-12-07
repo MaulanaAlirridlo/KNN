@@ -4,9 +4,9 @@ from os import listdir
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 
-df = pd.read_excel("hsv.xlsx")
+df = pd.read_excel("extraction.xlsx")
 
-x = np.array(df.iloc[:, 0:3])
+x = np.array(df.iloc[:, 0:23])
 y = np.array(df['Class'])
 
 xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.3)
