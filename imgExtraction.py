@@ -8,5 +8,7 @@ def imgExtraction(path):
     saturation = hsvImg[:, :, 1].mean()
     value = hsvImg[:, :, 2].mean()
     [g0, g45, g90, g135] = glcm(img)
-    return [hue, saturation, value, g0['asm'], g45['asm'], g90['asm'], g135['asm'], g0['kontras'], g45['kontras'], g90['kontras'], g135['kontras'], g0['idm'], g45['idm'], g90['idm'],
-            g135['idm'], g0['entropi'], g45['entropi'], g90['entropi'], g135['entropi'], g0['korelasi'], g45['korelasi'], g90['korelasi'], g135['korelasi'],]
+    return [hue, saturation, value, g0['asm'], g45['asm'], g90['asm'], g135['asm'], g0['kontras'], 
+            g45['kontras'], g90['kontras'], g135['kontras'], g0['idm'], g45['idm'], g90['idm'],
+            g135['idm'], g0['entropi'], g45['entropi'], g90['entropi'], g135['entropi'], g0['korelasi'], 
+            g45['korelasi'], g90['korelasi'], g135['korelasi']]

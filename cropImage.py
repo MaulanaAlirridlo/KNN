@@ -9,7 +9,7 @@ def croppingImage(path):
 
     # threshold on white
     # Define lower and uppper limits
-    lower = np.array([200, 200, 200])
+    lower = np.array([120, 120, 120])
     upper = np.array([255, 255, 255])
 
     # Create mask to only select black
@@ -27,6 +27,6 @@ def croppingImage(path):
 
     cv2.imwrite(path, result)
 
-for root, subdir, file in walk("./images"):
+for root, subdir, file in walk("./images/training/busuk"):
     for file in file :
         croppingImage(root+"/"+file)

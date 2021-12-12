@@ -3,7 +3,8 @@ import numpy as np
 from os import listdir
 import math
 from imgExtraction import imgExtraction
-
+import time
+start = time.time()
 df = pd.read_excel("extraction.xlsx")
 col = 23
 
@@ -17,10 +18,16 @@ def predict(k, attributes) :
         for i in range(col) :
             res += ((v[i]-attributes[i])**2)
         ed.append(math.sqrt(res))
+        res = 0
     sortedK = [ed for y, ed in sorted(zip(ed, y))]
+    print(sortedK)
     return max(set(sortedK[:k]), key=sortedK[:k].count)
 
 path = './images/testing'
 for file in listdir(path) :
-    classified = predict(3, imgExtraction(path+"/"+file))
+    img = imgExtraction(path+"/"+file)
+    print(img)
+    classified = predict(3, img)
     print(classified)
+
+print(time.time()-start)
