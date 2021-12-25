@@ -24,7 +24,7 @@ def predict(k, xTrain, yTrain, attributes) :
 
 akurasi = 0
 i = 1
-while akurasi < 90 :
+while akurasi < 85 :
     xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.3)
 
     yPredict = []

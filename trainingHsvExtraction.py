@@ -5,11 +5,11 @@ from os.path import isdir, isfile, splitext, join
 from statistics import mean
 from glcm import glcm
 import cv2
-
 import time
+
 start_time1 = time.time()
 hsvArray = []
-path = "./images/training/busuk"
+path = "./images/training"
 valid_images = [".jpg", ".jpeg", ".png"]
 
 hsvArray.append(["Hue", "Saturation", "Value", "ASM0", "ASM45", "ASM90", "ASM135", "kontras0", "kontras45", "kontras90", "kontras135", "IDM0", "IDM45", "IDM90",
@@ -31,21 +31,21 @@ def process(file, folder, folderPath):
 
 
 with ThreadPoolExecutor(max_workers=10) as executor:
-    # for folder in listdir(path):
-    #     folderPath = join(path, folder)
-    #     if isdir(folderPath):
-    #         for file in listdir(folderPath):
-    #             ext = splitext(file)[1]
-    #             if ext.lower() in valid_images:
-    #                 task = executor.submit(process, *[file, folder, folderPath])
-    folder = "busuk"
-    for file in listdir(path):
-        ext = splitext(file)[1]
-        if ext.lower() in valid_images:
-            task = executor.submit(process, *[file, folder, path])
+    for folder in listdir(path):
+        folderPath = join(path, folder)
+        if isdir(folderPath):
+            for file in listdir(folderPath):
+                ext = splitext(file)[1]
+                if ext.lower() in valid_images:
+                    task = executor.submit(process, *[file, folder, folderPath])
+    # folder = "matang"
+    # for file in listdir(path):
+    #     ext = splitext(file)[1]
+    #     if ext.lower() in valid_images:
+    #         task = executor.submit(process, *[file, folder, path])
 
 
-workbook = xlsxwriter.Workbook('extraction2.xlsx')
+workbook = xlsxwriter.Workbook('extraction.xlsx')
 worksheet = workbook.add_worksheet()
 for row, hsv in enumerate(hsvArray):
     worksheet.write_row(row, 0, hsv)
