@@ -31,21 +31,23 @@ def process(file, folder, folderPath):
 
 
 with ThreadPoolExecutor(max_workers=10) as executor:
-    for folder in listdir(path):
-        folderPath = join(path, folder)
-        if isdir(folderPath):
-            for file in listdir(folderPath):
-                ext = splitext(file)[1]
-                if ext.lower() in valid_images:
-                    task = executor.submit(process, *[file, folder, folderPath])
-    # folder = "matang"
-    # for file in listdir(path):
-    #     ext = splitext(file)[1]
-    #     if ext.lower() in valid_images:
-    #         task = executor.submit(process, *[file, folder, path])
+    # for folder in listdir(path):
+    #     folderPath = join(path, folder)
+    #     if isdir(folderPath):
+    #         for file in listdir(folderPath):
+    #             ext = splitext(file)[1]
+    #             if ext.lower() in valid_images:
+    #                 task = executor.submit(process, *[file, folder, folderPath])
+
+    path = "./backup/fadhil"
+    folder = "matang"
+    for file in listdir(path):
+        ext = splitext(file)[1]
+        if ext.lower() in valid_images:
+            task = executor.submit(process, *[file, folder, path])
 
 
-workbook = xlsxwriter.Workbook('extraction.xlsx')
+workbook = xlsxwriter.Workbook('x.xlsx')
 worksheet = workbook.add_worksheet()
 for row, hsv in enumerate(hsvArray):
     worksheet.write_row(row, 0, hsv)

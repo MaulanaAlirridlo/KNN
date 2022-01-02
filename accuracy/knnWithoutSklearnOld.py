@@ -28,12 +28,12 @@ def predict(k, xTrain, yTrain, attributes) :
             res += ((v[i]-attributes[i])**2)
         ed.append(math.sqrt(res))
         res = 0
-    # sortedK = [ed for yTrain, ed in sorted(zip(ed, yTrain))]
-    # return max(set(sortedK[:k]), key=sortedK[:k].count)
+    sortedK = [ed for yTrain, ed in sorted(zip(ed, yTrain))]
+    return max(set(sortedK[:k]), key=sortedK[:k].count)
 
-    rank = calculate_rank(ed)
-    selected = [yTrain for rank, yTrain in zip(rank, yTrain) if rank <= k]
-    return max(set(selected[:k]), key=selected[:k].count)
+    # rank = calculate_rank(ed)
+    # selected = [yTrain for rank, yTrain in zip(rank, yTrain) if rank <= k]
+    # return max(set(selected[:k]), key=selected[:k].count)
 
 akurasi = 0
 i = 1
